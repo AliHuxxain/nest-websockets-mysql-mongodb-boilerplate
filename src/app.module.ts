@@ -2,6 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_GUARD } from '@nestjs/core';
+import { RolesGuard } from './Authentication/guard/role.guard';
 import { JwtAuthGuard } from './Authentication/guard/jwt.guard';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
@@ -29,6 +30,7 @@ const { ttl, limit } = config.security.rateLimiting;
 	controllers: [],
 	providers: [
 		{ provide: APP_GUARD, useClass: JwtAuthGuard },
+		{ provide: APP_GUARD, useClass: RolesGuard },
 		{ provide: APP_GUARD, useClass: ThrottlerGuard }
 	]
 })

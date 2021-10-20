@@ -14,9 +14,9 @@ export class UserService {
     constructor (@InjectRepository(User) private userRepository: Repository<User>) {}
 
 
-    // async findOne (id: number): Promise<User> {
-    //     return await this.userRepository.findOne(id);
-    // }
+    async findOne (id: number): Promise<User> {
+        return await this.userRepository.findOne(id);
+    }
 
 
     // async findAll (): Promise<User[]> {

@@ -13,13 +13,13 @@ export default {
         password: 'root',
         database: 'databaseName',
         entities: [User, RefreshToken]
-        
+
     },
 
     mongo: {
 
         uri: 'mongodb://localhost:27017/databaseName'
-        
+
     }
 
 }

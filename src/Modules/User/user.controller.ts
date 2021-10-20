@@ -1,4 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
+import { Roles } from 'src/Utilities/Decorators/role.decorator';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 
@@ -11,10 +12,11 @@ export class UserController {
     constructor (private readonly userService: UserService) {}
 
     
-    // @Get(':id')
-    // findOne (@Param('id') id): Promise<User> {
-    //     return this.userService.findOne(id);
-    // }
+    @Get(':id')
+    @Roles('admin')
+    findOne (@Param('id') id): Promise<User> {
+        return this.userService.findOne(id);
+    }
 
 
     // @Get()
